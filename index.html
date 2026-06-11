@@ -6,7 +6,7 @@
 <meta name="description" content="Peptide Education for Women 40+. Trusted vendors, science-backed protocols, and wellness tools.">
 <title>Glow With Heather</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* =============================================
    GLOW WITH HEATHER — Complete Website CSS
@@ -14,31 +14,37 @@
 ============================================= */
 
 :root {
-  --rose:       #E8436A;
-  --rose-light: #F7839A;
-  --rose-pale:  #FDE8ED;
-  --gold:       #D4993A;
-  --gold-light: #F2C96E;
-  --gold-pale:  #FEF6E4;
+  --rose:       #C8556B;
+  --rose-light: #E2849A;
+  --rose-pale:  #FCEDF1;
+  --blush:      #F5C6D0;
+  --mauve:      #A06070;
+  --lavender:   #C9B8E8;
+  --lavender-pale: #F3EEFB;
+  --gold:       #C4883A;
+  --gold-light: #E8B86D;
+  --gold-pale:  #FEF4E2;
   --plum:       #7B3FA8;
   --plum-light: #B07FD4;
-  --plum-pale:  #F5EEFF;
+  --plum-pale:  #F4EEFF;
   --teal:       #2aaaa0;
   --teal-pale:  #E6F7F6;
   --white:      #FFFFFF;
-  --cream:      #FDFAF7;
-  --gray-100:   #F8F5F2;
-  --gray-200:   #EDE8E3;
-  --gray-400:   #B0A89E;
-  --gray-700:   #5C5148;
-  --dark:       #2A1F18;
+  --cream:      #FDFAF8;
+  --gray-100:   #F8F4F2;
+  --gray-200:   #EDE6E1;
+  --gray-400:   #B8ACAA;
+  --gray-700:   #5C4E52;
+  --dark:       #2E1F24;
   --font-head:  'Playfair Display', Georgia, serif;
+  --font-script:'Dancing Script', cursive;
+  --font-elegant:'Cormorant Garamond', Georgia, serif;
   --font-body:  'Inter', system-ui, sans-serif;
-  --shadow-sm:  0 2px 8px rgba(232,67,106,0.10);
-  --shadow-md:  0 6px 24px rgba(0,0,0,0.10);
-  --shadow-lg:  0 16px 48px rgba(0,0,0,0.14);
-  --radius:     16px;
-  --radius-sm:  10px;
+  --shadow-sm:  0 2px 12px rgba(200,85,107,0.10);
+  --shadow-md:  0 6px 28px rgba(200,85,107,0.12);
+  --shadow-lg:  0 16px 48px rgba(200,85,107,0.14);
+  --radius:     18px;
+  --radius-sm:  12px;
   --radius-pill:50px;
 }
 
@@ -48,7 +54,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--white);
+  background: linear-gradient(160deg, #FDFAF8 0%, #FCEDF1 50%, #F4EEFB 100%);
+  background-attachment: fixed;
   color: var(--dark);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -75,6 +82,15 @@ a { text-decoration: none; color: inherit; }
 .eyebrow-plum { color: var(--plum); }
 .eyebrow-teal { color: var(--teal); }
 
+.script-label {
+  display: block;
+  font-family: var(--font-script);
+  font-size: 1.5rem;
+  color: var(--rose);
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
 h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 
 .section-title {
@@ -88,6 +104,102 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
   max-width: 580px;
   margin: 0 auto;
 }
+
+/* ---- GLOW PROTOCOLS PRODUCTS ---- */
+.protocols-section {
+  background: linear-gradient(135deg, #FDF8FA 0%, #FCEDF1 50%, #F4EEFB 100%);
+}
+.protocols-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+.protocol-card {
+  background: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(200,85,107,0.10);
+  transition: transform 0.25s, box-shadow 0.25s;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.protocol-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(200,85,107,0.18);
+}
+.protocol-img-wrap {
+  background: linear-gradient(160deg, #FCEDF1 0%, #F4EEFB 100%);
+  padding: 28px 20px 12px;
+}
+.protocol-img-wrap img {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.protocol-info {
+  padding: 20px 20px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.protocol-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+.protocol-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--dark);
+  margin: 0;
+}
+.protocol-desc {
+  font-size: 0.82rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+  flex: 1;
+}
+.protocol-peptide {
+  font-size: 0.75rem;
+  color: var(--mauve);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.protocol-price {
+  font-family: var(--font-elegant);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--dark);
+  font-style: italic;
+}
+.protocol-size {
+  font-size: 0.72rem;
+  color: var(--gray-400);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.protocol-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--rose), var(--mauve));
+  color: white;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+.protocol-btn:hover { opacity: 0.88; }
+
 .divider-rose {
   width: 48px; height: 4px;
   background: linear-gradient(to right, var(--rose), var(--gold-light));
@@ -1058,91 +1170,89 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 </section>
 
 <!-- ======= GLOW PROTOCOLS (PRODUCTS) ======= -->
-<section class="products-section" id="protocols">
+<section class="section protocols-section" id="protocols">
   <div class="container">
     <div class="text-center">
-      <span class="eyebrow">Advanced Skincare</span>
-      <h2 class="section-title">Where Demand Meets Luxury</h2>
+      <span class="script-label">Heather's Own Line</span>
+      <h2 class="section-title">Glow Protocols</h2>
       <div class="divider-rose"></div>
-      <p class="section-sub">Glow Protocols are advanced luxury serums designed to support hydration, glow, firmness, and radiant-looking skin.</p>
-    </div>
-    <div class="products-grid">
-
-      <div class="product-card">
-        <div class="product-image">
-          <div class="product-bestseller">BESTSELLER</div>
-          <span>&#10024;</span>
-        </div>
-        <div class="product-body">
-          <div class="product-tags">
-            <span class="product-tag">GHK-Cu</span>
-            <span class="product-tag">SNAP-8</span>
-          </div>
-          <h3>Protocol 01</h3>
-          <div class="product-subtitle">GHK-Cu + SNAP-8 Face Serum</div>
-          <p class="product-desc">A clinically inspired peptide serum formulated with GHK-Cu Copper Peptide and SNAP-8 to support skin firmness, hydration, and a visibly renewed complexion. Lightweight and fast-absorbing.</p>
-          <div class="product-price-row">
-            <span class="product-price">$39</span>
-            <span class="product-size">15 mL / 0.5 oz</span>
-          </div>
-          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-rose">Buy Now &mdash; $39</a>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image"><span>&#128167;</span></div>
-        <div class="product-body">
-          <div class="product-tags"><span class="product-tag">GHK-Cu</span></div>
-          <h3>Protocol 02</h3>
-          <div class="product-subtitle">GHK-Cu Face Serum</div>
-          <p class="product-desc">An advanced hydrating facial serum formulated with GHK-Cu Copper Peptide. Lightweight, fast-absorbing, and designed to support smoother, softer, healthier-looking skin.</p>
-          <div class="product-price-row">
-            <span class="product-price">$25</span>
-            <span class="product-size">15 mL / 0.5 oz</span>
-          </div>
-          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-rose">Buy Now &mdash; $25</a>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image"><span>&#128134;</span></div>
-        <div class="product-body">
-          <div class="product-tags"><span class="product-tag">GHK-Cu</span></div>
-          <h3>CU-HAIR 01</h3>
-          <div class="product-subtitle">GHK-Cu Hair + Scalp Serum</div>
-          <p class="product-desc">A precision scalp serum formulated with GHK-Cu Copper Peptide to support scalp conditioning and the appearance of fuller, healthier-looking hair. Targeted scalp application.</p>
-          <div class="product-price-row">
-            <span class="product-price">$32</span>
-            <span class="product-size">30 mL / 1 oz</span>
-          </div>
-          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-rose">Buy Now &mdash; $32</a>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="product-image"><span>&#10024;</span></div>
-        <div class="product-body">
-          <div class="product-tags"><span class="product-tag">AHK-Cu</span></div>
-          <h3>CU-HAIR 02</h3>
-          <div class="product-subtitle">AHK-Cu Advanced Hair + Scalp Serum</div>
-          <p class="product-desc">Our advanced hair and scalp serum featuring AHK-Cu, an enhanced copper peptide complex. Formulated for next-level scalp support and visibly healthier, fuller-looking hair.</p>
-          <div class="product-price-row">
-            <span class="product-price">$45</span>
-            <span class="product-size">30 mL / 1 oz</span>
-          </div>
-          <a href="#" class="btn btn-outline">Coming Soon</a>
-        </div>
-      </div>
-
+      <p class="section-sub">Clinical-grade peptide serums formulated for women 40+. Small batches, real ingredients, nothing incidental.</p>
     </div>
 
-    <div class="bundle-card">
-      <h3>&#10024; The Glow Duo Bundle</h3>
-      <p>GHK-Cu + SNAP-8 Face Serum + Hair Protocol 01 &mdash; Get both best-sellers together for maximum glow from head to scalp.</p>
-      <div class="bundle-btns">
-        <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-rose">Shop the Bundle &mdash; $65</a>
-        <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-outline">View All Products &rarr;</a>
+    <div class="protocols-grid">
+
+      <div class="protocol-card">
+        <div class="protocol-img-wrap">
+          <img src="bottle.png" alt="Protocol 01 — Advanced Peptide Repair Serum">
+        </div>
+        <div class="protocol-info">
+          <span class="protocol-tag">Face Serum &middot; Bestseller</span>
+          <h3 class="protocol-name">Protocol 01</h3>
+          <p class="protocol-peptide">GHK-Cu &middot; SNAP-8</p>
+          <p class="protocol-desc">The flagship formula. Eight ingredients — hydration, firming, and radiance. The quiet work of repair.</p>
+          <div>
+            <span class="protocol-price">$39</span>
+            <span class="protocol-size">&nbsp; 0.5 FL OZ / 15 ML</span>
+          </div>
+          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
+        </div>
       </div>
+
+      <div class="protocol-card">
+        <div class="protocol-img-wrap">
+          <img src="bottle_protocol_02.png" alt="Protocol 02 — GHK-Cu Face Serum">
+        </div>
+        <div class="protocol-info">
+          <span class="protocol-tag">Face Serum</span>
+          <h3 class="protocol-name">Protocol 02</h3>
+          <p class="protocol-peptide">GHK-Cu</p>
+          <p class="protocol-desc">Pure GHK-Cu precision. Hydration, softening, and a natural glow — streamlined and effective.</p>
+          <div>
+            <span class="protocol-price">$25</span>
+            <span class="protocol-size">&nbsp; 0.5 FL OZ / 15 ML</span>
+          </div>
+          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
+        </div>
+      </div>
+
+      <div class="protocol-card">
+        <div class="protocol-img-wrap">
+          <img src="bottle_cu_hair_01.png" alt="Cu-Hair 01 — GHK-Cu Hair & Scalp Serum">
+        </div>
+        <div class="protocol-info">
+          <span class="protocol-tag">Scalp &amp; Hair</span>
+          <h3 class="protocol-name">Cu-Hair 01</h3>
+          <p class="protocol-peptide">GHK-Cu &middot; Caffeine</p>
+          <p class="protocol-desc">GHK-Cu scalp and hair serum. Conditioning, fullness, and scalp health in one targeted formula.</p>
+          <div>
+            <span class="protocol-price">$32</span>
+            <span class="protocol-size">&nbsp; 1 FL OZ / 30 ML</span>
+          </div>
+          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
+        </div>
+      </div>
+
+      <div class="protocol-card">
+        <div class="protocol-img-wrap">
+          <img src="bottle_cu_hair_02.png" alt="Cu-Hair 02 Advanced — AHK-Cu Hair & Scalp Serum">
+        </div>
+        <div class="protocol-info">
+          <span class="protocol-tag">Scalp &amp; Hair &middot; Advanced</span>
+          <h3 class="protocol-name">Cu-Hair 02</h3>
+          <p class="protocol-peptide">AHK-Cu &middot; Caffeine</p>
+          <p class="protocol-desc">The upgraded protocol. AHK-Cu for maximum conditioning, fullness, and advanced scalp support.</p>
+          <div>
+            <span class="protocol-price">$45</span>
+            <span class="protocol-size">&nbsp; 1 FL OZ / 30 ML</span>
+          </div>
+          <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center" style="margin-top:40px">
+      <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="btn btn-rose">Shop All Glow Protocols &rarr;</a>
     </div>
   </div>
 </section>
