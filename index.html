@@ -224,21 +224,22 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 .protocol-btn {
   display: inline-block;
   margin-top: 18px;
-  padding: 12px 30px;
-  background: transparent;
-  color: var(--rose);
-  border: 1.5px solid var(--rose);
+  padding: 13px 32px;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--mauve) 100%);
+  color: white;
+  border: 1.5px solid transparent;
   border-radius: 50px;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(200,85,107,0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 .protocol-btn:hover {
-  background: var(--rose);
-  color: white;
-  box-shadow: 0 6px 18px rgba(200,85,107,0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(200,85,107,0.34);
+  filter: brightness(1.05);
 }
 
 .divider-rose {
