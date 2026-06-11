@@ -85,10 +85,11 @@ a { text-decoration: none; color: inherit; }
 .script-label {
   display: block;
   font-family: var(--font-script);
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   color: var(--rose);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   letter-spacing: 0.02em;
+  opacity: 0.92;
 }
 
 h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
@@ -111,27 +112,37 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 }
 .protocols-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 28px;
-  margin-top: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-top: 56px;
 }
 .protocol-card {
   background: white;
-  border-radius: 22px;
+  border: 1px solid rgba(200,85,107,0.10);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(200,85,107,0.10);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 16px rgba(160,96,112,0.06);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.35s ease;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 .protocol-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(200,85,107,0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(160,96,112,0.16);
+  border-color: rgba(200,85,107,0.22);
 }
 .protocol-img-wrap {
-  background: linear-gradient(160deg, #FCEDF1 0%, #F4EEFB 100%);
-  padding: 24px 16px 8px;
+  background: linear-gradient(165deg, #FBF3F6 0%, #F6EFF9 100%);
+  padding: 28px 22px 14px;
+  position: relative;
+}
+.protocol-img-wrap::after {
+  content: "";
+  position: absolute;
+  left: 22px; right: 22px; bottom: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(200,85,107,0.12), transparent);
 }
 .protocol-img-wrap img {
   width: 100%;
@@ -140,67 +151,95 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
   height: auto;
   aspect-ratio: 1138 / 1382;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 10px;
   image-rendering: -webkit-optimize-contrast;
+  transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
 }
+.protocol-card:hover .protocol-img-wrap img { transform: scale(1.035); }
 .protocol-info {
-  padding: 20px 20px 24px;
+  padding: 26px 24px 28px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 9px;
 }
 .protocol-tag {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--rose);
+  opacity: 0.85;
 }
 .protocol-name {
   font-family: var(--font-head);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.01em;
   color: var(--dark);
-  margin: 0;
-}
-.protocol-desc {
-  font-size: 0.82rem;
-  color: var(--gray-700);
-  line-height: 1.5;
-  flex: 1;
+  margin: 2px 0 0;
 }
 .protocol-peptide {
-  font-size: 0.75rem;
+  display: inline-block;
+  font-size: 0.66rem;
   color: var(--mauve);
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: rgba(160,96,112,0.07);
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+.protocol-desc {
+  font-size: 0.83rem;
+  color: var(--gray-700);
+  line-height: 1.65;
+  flex: 1;
+  margin: 4px 0 2px;
+}
+.protocol-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 14px;
+  margin-top: 2px;
+  border-top: 1px solid rgba(200,85,107,0.10);
+  width: 100%;
 }
 .protocol-price {
   font-family: var(--font-elegant);
-  font-size: 1.4rem;
+  font-size: 1.55rem;
   font-weight: 500;
   color: var(--dark);
   font-style: italic;
+  line-height: 1;
 }
 .protocol-size {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--gray-400);
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 .protocol-btn {
   display: inline-block;
-  margin-top: 12px;
-  padding: 10px 24px;
-  background: linear-gradient(135deg, var(--rose), var(--mauve));
-  color: white;
+  margin-top: 18px;
+  padding: 12px 30px;
+  background: transparent;
+  color: var(--rose);
+  border: 1.5px solid var(--rose);
   border-radius: 50px;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: opacity 0.2s;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
-.protocol-btn:hover { opacity: 0.88; }
+.protocol-btn:hover {
+  background: var(--rose);
+  color: white;
+  box-shadow: 0 6px 18px rgba(200,85,107,0.28);
+}
 
 .divider-rose {
   width: 48px; height: 4px;
@@ -1192,9 +1231,9 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
           <h3 class="protocol-name">Protocol 01</h3>
           <p class="protocol-peptide">GHK-Cu &middot; SNAP-8</p>
           <p class="protocol-desc">The flagship formula. Eight ingredients — hydration, firming, and radiance. The quiet work of repair.</p>
-          <div>
+          <div class="protocol-meta">
             <span class="protocol-price">$39</span>
-            <span class="protocol-size">&nbsp; 0.5 FL OZ / 15 ML</span>
+            <span class="protocol-size">0.5 FL OZ / 15 ML</span>
           </div>
           <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
         </div>
@@ -1209,9 +1248,9 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
           <h3 class="protocol-name">Protocol 02</h3>
           <p class="protocol-peptide">GHK-Cu</p>
           <p class="protocol-desc">Pure GHK-Cu precision. Hydration, softening, and a natural glow — streamlined and effective.</p>
-          <div>
+          <div class="protocol-meta">
             <span class="protocol-price">$25</span>
-            <span class="protocol-size">&nbsp; 0.5 FL OZ / 15 ML</span>
+            <span class="protocol-size">0.5 FL OZ / 15 ML</span>
           </div>
           <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
         </div>
@@ -1226,9 +1265,9 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
           <h3 class="protocol-name">Cu-Hair 01</h3>
           <p class="protocol-peptide">GHK-Cu &middot; Caffeine</p>
           <p class="protocol-desc">GHK-Cu scalp and hair serum. Conditioning, fullness, and scalp health in one targeted formula.</p>
-          <div>
+          <div class="protocol-meta">
             <span class="protocol-price">$32</span>
-            <span class="protocol-size">&nbsp; 1 FL OZ / 30 ML</span>
+            <span class="protocol-size">1 FL OZ / 30 ML</span>
           </div>
           <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
         </div>
@@ -1243,9 +1282,9 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
           <h3 class="protocol-name">Cu-Hair 02</h3>
           <p class="protocol-peptide">AHK-Cu &middot; Caffeine</p>
           <p class="protocol-desc">The upgraded protocol. AHK-Cu for maximum conditioning, fullness, and advanced scalp support.</p>
-          <div>
+          <div class="protocol-meta">
             <span class="protocol-price">$45</span>
-            <span class="protocol-size">&nbsp; 1 FL OZ / 30 ML</span>
+            <span class="protocol-size">1 FL OZ / 30 ML</span>
           </div>
           <a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" class="protocol-btn">Shop Now</a>
         </div>
