@@ -834,6 +834,139 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 .calc-toggle { display: flex; gap: 8px; margin-bottom: 20px; }
 .calc-toggle button { flex: 1; padding: 8px; border: 1.5px solid var(--gray-200); border-radius: 8px; background: var(--gray-100); font-size: 0.83rem; cursor: pointer; transition: all 0.15s; }
 .calc-toggle button.active { background: var(--rose); color: white; border-color: var(--rose); }
+/* ---- FATHERS DAY MENS COLLECTION ---- */
+.mens-section {
+  background: linear-gradient(165deg, #1F1A22 0%, #2E2129 55%, #3A2730 100%);
+  position: relative;
+  overflow: hidden;
+}
+.mens-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(200,136,58,0.12), transparent 55%),
+              radial-gradient(circle at 85% 90%, rgba(200,85,107,0.10), transparent 50%);
+  pointer-events: none;
+}
+.mens-inner { position: relative; z-index: 1; }
+.mens-header { text-align: center; margin-bottom: 12px; }
+.mens-fathers-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(200,136,58,0.15);
+  border: 1px solid rgba(232,184,109,0.35);
+  color: var(--gold-light);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  padding: 7px 18px; border-radius: 50px; margin-bottom: 22px;
+}
+.mens-script {
+  display: block;
+  font-family: var(--font-script);
+  font-size: 1.7rem;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+  opacity: 0.95;
+}
+.mens-title {
+  font-family: var(--font-head);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  color: #FBF5F0;
+  margin-bottom: 14px;
+  letter-spacing: 0.01em;
+}
+.mens-divider {
+  width: 56px; height: 3px;
+  background: linear-gradient(to right, var(--gold), var(--rose));
+  border-radius: 4px; margin: 14px auto 26px;
+}
+.mens-intro {
+  max-width: 640px; margin: 0 auto 8px;
+  color: rgba(251,245,240,0.78);
+  font-size: 1.04rem; line-height: 1.8; text-align: center;
+}
+.mens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 52px;
+}
+.mens-card {
+  background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(232,184,109,0.16);
+  border-radius: 18px;
+  padding: 28px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.mens-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232,184,109,0.42);
+  box-shadow: 0 20px 44px rgba(0,0,0,0.34);
+}
+.mens-card.flagship {
+  border-color: rgba(232,184,109,0.5);
+  background: linear-gradient(160deg, rgba(200,136,58,0.12), rgba(255,255,255,0.02));
+}
+.mens-card-flag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: #1F1A22; background: var(--gold-light);
+  padding: 4px 12px; border-radius: 50px; margin-bottom: 14px;
+}
+.mens-card-name {
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  color: #FBF5F0;
+  margin: 0 0 6px;
+}
+.mens-card-goal {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gold-light); opacity: 0.85; margin-bottom: 16px;
+}
+.mens-card-includes {
+  list-style: none; margin: 0 0 18px; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+.mens-card-includes li {
+  font-size: 0.74rem; font-weight: 500; letter-spacing: 0.5px;
+  color: #EDE0DA;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(232,184,109,0.18);
+  padding: 5px 12px; border-radius: 50px;
+}
+.mens-card-tagline {
+  font-family: var(--font-elegant);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: rgba(251,245,240,0.82);
+  flex: 1;
+  margin-bottom: 22px;
+}
+.mens-card-btn {
+  display: inline-block;
+  text-align: center;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--gold), #A8702A);
+  color: #1F1A22;
+  border-radius: 50px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(200,136,58,0.28);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.mens-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(200,136,58,0.42);
+  filter: brightness(1.06);
+}
+.mens-footer-cta { text-align: center; margin-top: 44px; }
+.mens-footer-note {
+  color: rgba(251,245,240,0.6);
+  font-size: 0.85rem; margin-top: 16px; letter-spacing: 0.3px;
+}
+@media (max-width: 600px) {
+  .mens-grid { grid-template-columns: 1fr; }
+}
 /* ---- AMAZON PICKS ---- */
 .amazon-section { background: var(--gray-100); padding: 64px 0; }
 .amazon-scroll-wrap { position: relative; }
@@ -1017,6 +1150,7 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
       <span>Peptides &middot; Longevity &middot; Beauty &middot; Energy</span>
     </a>
     <ul class="nav-links">
+      <li><a href="#mens-collection">Father's Day Gifts</a></li>
       <li><a href="#vendors">Trusted Vendors</a></li>
       <li><a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener">Glow Protocols</a></li>
       <li><a href="#calculators">Calculators</a></li>
@@ -1033,6 +1167,7 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
+    <li><a href="#mens-collection" onclick="toggleMenu()">Father's Day Gifts</a></li>
     <li><a href="#vendors" onclick="toggleMenu()">Trusted Vendors</a></li>
     <li><a href="https://glowprotocols.com/#shop" target="_blank" rel="noopener" onclick="toggleMenu()">Glow Protocols</a></li>
     <li><a href="#calculators" onclick="toggleMenu()">Calculators</a></li>
@@ -1088,6 +1223,129 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
           <div>Peptide Education</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FATHERS DAY MENS COLLECTION ======= -->
+<section class="section mens-section" id="mens-collection">
+  <div class="container mens-inner">
+    <div class="mens-header">
+      <div class="mens-fathers-badge">&#127881; Father's Day Gift Guide</div>
+      <span class="mens-script">For Him</span>
+      <h2 class="mens-title">Glow Lab Men's Collection</h2>
+      <div class="mens-divider"></div>
+      <p class="mens-intro">This Father's Day, give the man in your life something that actually matters &mdash; the gift of feeling like himself again. Curated peptide stacks for energy, recovery, strength, and longevity. Every stack is shoppable through Pepstracker, where you can compare trusted vendors and find the best price.</p>
+    </div>
+
+    <div class="mens-grid">
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Dad Bod Destroyer Stack</h3>
+        <div class="mens-card-goal">Belly Fat &middot; Metabolism &middot; Recomposition</div>
+        <ul class="mens-card-includes">
+          <li>Tesamorelin</li><li>MOTS-c</li><li>5-Amino-1MQ</li>
+        </ul>
+        <p class="mens-card-tagline">Attack stubborn belly fat. Reignite metabolism. Build momentum.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Alpha Reset Stack</h3>
+        <div class="mens-card-goal">Energy &middot; Vitality &middot; Confidence</div>
+        <ul class="mens-card-includes">
+          <li>CJC-1295</li><li>Ipamorelin</li><li>MOTS-c</li>
+        </ul>
+        <p class="mens-card-tagline">For the man who remembers what it felt like to wake up ready to conquer the day.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Weekend Warrior Stack</h3>
+        <div class="mens-card-goal">Recovery &middot; Joint Support</div>
+        <ul class="mens-card-includes">
+          <li>BPC-157</li><li>TB-500</li>
+        </ul>
+        <p class="mens-card-tagline">Because your mind is still 25 but your knees disagree.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Iron Man Stack</h3>
+        <div class="mens-card-goal">Muscle Retention &middot; Recovery</div>
+        <ul class="mens-card-includes">
+          <li>CJC-1295</li><li>Ipamorelin</li><li>BPC-157</li>
+        </ul>
+        <p class="mens-card-tagline">Train harder. Recover faster. Stay in the game longer.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Executive Edge Stack</h3>
+        <div class="mens-card-goal">Focus &middot; Energy &middot; Performance</div>
+        <ul class="mens-card-includes">
+          <li>MOTS-c</li><li>SS-31</li><li>Selank</li>
+        </ul>
+        <p class="mens-card-tagline">Sharper thinking. Better energy. Less burnout.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Back Nine Stack</h3>
+        <div class="mens-card-goal">Golf &middot; Mobility &middot; Recovery</div>
+        <ul class="mens-card-includes">
+          <li>BPC-157</li><li>TB-500</li><li>ARA-290</li>
+        </ul>
+        <p class="mens-card-tagline">Move better. Swing harder. Wake up with less pain.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Men's Longevity Stack</h3>
+        <div class="mens-card-goal">Healthy Aging</div>
+        <ul class="mens-card-includes">
+          <li>Epithalon</li><li>MOTS-c</li><li>SS-31</li>
+        </ul>
+        <p class="mens-card-tagline">Support your cells today for the decades ahead.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Date Night Stack</h3>
+        <div class="mens-card-goal">Libido &middot; Confidence</div>
+        <ul class="mens-card-includes">
+          <li>PT-141</li>
+        </ul>
+        <p class="mens-card-tagline">When desire isn't the problem &mdash; but life keeps getting in the way.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card">
+        <h3 class="mens-card-name">The Silverback Stack</h3>
+        <div class="mens-card-goal">Men 50+</div>
+        <ul class="mens-card-includes">
+          <li>Tesamorelin</li><li>Epithalon</li><li>MOTS-c</li><li>SS-31</li>
+        </ul>
+        <p class="mens-card-tagline">Strength. Energy. Longevity. Leadership. The "I refuse to age quietly" stack.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+      <div class="mens-card flagship">
+        <span class="mens-card-flag">&#11088; Flagship</span>
+        <h3 class="mens-card-name">The Kingmaker Stack</h3>
+        <div class="mens-card-goal">Premium Flagship Men's Bundle</div>
+        <ul class="mens-card-includes">
+          <li>Tesamorelin</li><li>MOTS-c</li><li>SS-31</li><li>BPC-157</li><li>Epithalon</li>
+        </ul>
+        <p class="mens-card-tagline">Built for men who aren't finished building their legacy.</p>
+        <a href="https://pepstracker.com" target="_blank" rel="noopener" class="mens-card-btn">Shop on Pepstracker</a>
+      </div>
+
+    </div>
+
+    <div class="mens-footer-cta">
+      <a href="https://pepstracker.com" target="_blank" rel="noopener" class="btn btn-gold">Compare All Stacks on Pepstracker &rarr;</a>
+      <p class="mens-footer-note">All stacks shoppable through Pepstracker &middot; Compare trusted vendors &middot; Find the best price</p>
     </div>
   </div>
 </section>
