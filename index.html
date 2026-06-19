@@ -1138,6 +1138,133 @@ h1,h2,h3,h4 { font-family: var(--font-head); line-height: 1.2; }
   .book-inner { flex-direction: column; align-items: center; text-align: center; }
   .bundle-btns { flex-direction: column; }
 }
+
+/* ---- GLOW AMINOS SPARKLE ANIMATION ---- */
+@keyframes sparkle {
+  0% { opacity: 0.4; transform: scale(0.85) rotate(-10deg); }
+  100% { opacity: 1; transform: scale(1.2) rotate(10deg); }
+}
+@keyframes shimmer-glow {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.glow-aminos-shine {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer-glow 2s linear infinite;
+}
+
+/* ---- PEPTIDE GUIDE TAB ---- */
+.peptide-guide-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #C8556B, #7B3FA8);
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 12px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 20px rgba(200,85,107,0.35);
+  animation: pulse-guide 2.5s ease-in-out infinite;
+  margin-top: 16px;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.peptide-guide-tab:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(200,85,107,0.45);
+}
+@keyframes pulse-guide {
+  0%, 100% { box-shadow: 0 4px 20px rgba(200,85,107,0.35); }
+  50% { box-shadow: 0 6px 30px rgba(123,63,168,0.55), 0 0 0 6px rgba(200,85,107,0.12); }
+}
+
+/* ---- PEPTIDE GUIDE MODAL ---- */
+.peptide-guide-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(46,31,36,0.55);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.peptide-guide-modal-backdrop.open { display: flex; }
+.peptide-guide-modal {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 40px 40px;
+  max-width: 440px;
+  width: calc(100% - 48px);
+  box-shadow: 0 24px 64px rgba(46,31,36,0.22);
+  position: relative;
+  text-align: center;
+  animation: modal-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes modal-pop {
+  from { opacity: 0; transform: scale(0.88) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.peptide-guide-modal .modal-close {
+  position: absolute;
+  top: 14px; right: 18px;
+  background: none; border: none;
+  font-size: 1.4rem; cursor: pointer; color: #B8ACAA;
+  transition: color 0.2s;
+}
+.peptide-guide-modal .modal-close:hover { color: var(--rose); }
+.peptide-guide-modal .modal-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.peptide-guide-modal h3 {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.peptide-guide-modal p {
+  color: var(--gray-700);
+  font-size: 0.97rem;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.peptide-guide-modal input {
+  width: 100%;
+  padding: 12px 18px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 50px;
+  font-size: 0.97rem;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: var(--font-body);
+}
+.peptide-guide-modal input:focus { border-color: var(--rose); }
+.peptide-guide-modal .guide-submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: var(--font-body);
+  margin-top: 4px;
+}
+.peptide-guide-modal .guide-submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+.peptide-guide-modal .guide-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.peptide-guide-modal .guide-success.show { display: flex; }
 </style>
 </head>
 <body>
@@ -1215,6 +1342,12 @@ section.hero{padding-top:calc(68px + var(--fd-h)) !important;}
       <div class="hero-btns">
         <a href="#protocols" class="btn btn-rose">Shop Glow Protocols</a>
         <a href="#join" class="btn btn-outline">Join Glow Lab Inner Circle</a>
+      </div>
+      <!-- FREE BEGINNER PEPTIDE GUIDE TAB -->
+      <div style="margin-top:4px;">
+        <button class="peptide-guide-tab" onclick="document.getElementById('peptide-guide-modal').classList.add('open')">
+          &#128214; Click here for Free Beginner Peptide Guide
+        </button>
       </div>
       <div class="hero-social">
         <span class="hero-social-label">Follow along:</span>
@@ -1393,11 +1526,7 @@ section.hero{padding-top:calc(68px + var(--fd-h)) !important;}
           <span class="widget-updated">&#8635; Updated hourly</span>
         </div>
         <div class="widget-search">Search peptide or vendor...</div>
-        <div class="vendor-row">
-          <span class="vendor-name">ION Peptides</span>
-          <span class="vendor-badge badge-lowest">LOWEST</span>
-          <span class="vendor-price">$48</span>
-        </div>
+        
         <div class="vendor-row">
           <span class="vendor-name">NURA Peptides</span>
           <span class="vendor-badge badge-code">-25% CODE</span>
@@ -1430,19 +1559,28 @@ section.hero{padding-top:calc(68px + var(--fd-h)) !important;}
     </div>
 
     <div style="margin-top:40px">
-      <div class="featured-deal">
-        <div>
-          <div class="featured-tag">&#127775; Featured Tonight</div>
-          <h3>Fusion Peptide &mdash; Buy 1 Get 1 FREE</h3>
+      <div class="featured-deal" style="background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 40%, #F59E0B 100%); position:relative; overflow:hidden;">
+        <!-- Sparkle animation overlay -->
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;overflow:hidden;">
+          <span style="position:absolute;top:10%;left:8%;font-size:1.5rem;animation:sparkle 1.4s infinite alternate;">&#10024;</span>
+          <span style="position:absolute;top:5%;left:45%;font-size:1.1rem;animation:sparkle 1.8s 0.3s infinite alternate;">&#11088;</span>
+          <span style="position:absolute;top:15%;right:10%;font-size:1.3rem;animation:sparkle 1.6s 0.6s infinite alternate;">&#10024;</span>
+          <span style="position:absolute;bottom:20%;left:5%;font-size:1.0rem;animation:sparkle 2s 0.2s infinite alternate;">&#11088;</span>
+          <span style="position:absolute;bottom:15%;right:8%;font-size:1.4rem;animation:sparkle 1.7s 0.9s infinite alternate;">&#10024;</span>
+          <span style="position:absolute;bottom:30%;left:50%;font-size:1.2rem;animation:sparkle 2.1s 0.4s infinite alternate;">&#9728;&#65039;</span>
+        </div>
+        <div style="position:relative;z-index:1;">
+          <div class="featured-tag" style="background:rgba(255,255,255,0.25);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.4);">&#127775; Featured Tonight</div>
+          <h3 style="font-size:2rem;font-weight:800;text-shadow:0 2px 12px rgba(0,0,0,0.18);letter-spacing:-0.5px;margin-top:8px;">&#10024; GLOW AMINOS &mdash; 45% OFF Tonight!</h3>
           <div class="deal-stack">
-            <span class="deal-badge">Buy 1 Get 1 FREE</span>
-            <span class="deal-badge">Code: PEPSTRACKER</span>
+            <span class="deal-badge" style="background:rgba(255,255,255,0.95);color:#8B5CF6;font-weight:800;font-size:1.05rem;padding:8px 18px;border-radius:50px;box-shadow:0 4px 16px rgba(0,0,0,0.15);">&#128293; 45% OFF &mdash; Tonight Only!</span>
+            <span class="deal-badge" style="background:rgba(255,255,255,0.85);color:#EC4899;font-weight:800;font-size:1.0rem;padding:8px 18px;border-radius:50px;box-shadow:0 4px 16px rgba(0,0,0,0.12);">Code: GLOWLAB &#10024;</span>
           </div>
-          <p>Fusion Peptide is offering a Buy One Get One Free deal tonight. Use code PEPSTRACKER at checkout. Don't miss this one &mdash; BOGO deals from Fusion don't come around often.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-            <a href="https://fusionpeptide.com/?ref=pepstracker" target="_blank" rel="noopener" class="btn btn-white">Shop Fusion Peptide &mdash; BOGO FREE</a>
-            <div class="code-display" onclick="copyCode('PEPSTRACKER', this)" style="cursor:pointer" title="Click to copy">
-              &#128203; PEPSTRACKER
+          <p style="margin-top:14px;font-size:1.08rem;font-weight:500;line-height:1.6;text-shadow:0 1px 6px rgba(0,0,0,0.12);">Fuel your glow from the inside out! Glow Aminos is Heather&rsquo;s go-to for recovery, radiance, and real results. Use code <strong style="background:rgba(255,255,255,0.2);padding:2px 8px;border-radius:8px;letter-spacing:1px;">GLOWLAB</strong> at checkout for <strong>45% off</strong> tonight only &mdash; don&rsquo;t miss it! &#11088;</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px">
+            <a href="https://glowaminos.com/?ref=glowwithheather" target="_blank" rel="noopener" class="btn btn-white" style="background:white;color:#8B5CF6;font-weight:800;font-size:1.02rem;padding:14px 28px;box-shadow:0 6px 24px rgba(0,0,0,0.18);border:2px solid rgba(255,255,255,0.9);transition:all 0.2s;">&#128293; Shop Glow Aminos &mdash; 45% OFF</a>
+            <div class="code-display" onclick="copyCode('GLOWLAB', this)" style="cursor:pointer;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.5);backdrop-filter:blur(6px);" title="Click to copy">
+              &#128203; GLOWLAB
             </div>
           </div>
         </div>
@@ -1450,11 +1588,7 @@ section.hero{padding-top:calc(68px + var(--fd-h)) !important;}
 
       <h3 style="font-size:1.2rem;margin-bottom:20px;color:var(--dark)">Top Deals Right Now</h3>
       <div class="deals-grid">
-        <div class="deal-card">
-          <div class="deal-card-name">ION Peptides</div>
-          <div class="deal-card-detail">15% OFF &middot; Code: GLOWLAB</div>
-          <a href="https://ionpeptide.com?ref=Glowlab" class="btn btn-rose">Shop Now</a>
-        </div>
+        
         <div class="deal-card">
           <div class="deal-card-name">NURA Peptides</div>
           <div class="deal-card-detail">25% OFF &middot; Code: GLOWLAB25</div>
@@ -1475,14 +1609,7 @@ section.hero{padding-top:calc(68px + var(--fd-h)) !important;}
           <div class="deal-card-detail">10% OFF &middot; Code: GLOWLAB</div>
           <a href="https://ezpeptides.com" class="btn btn-rose">Shop Now</a>
         </div>
-        <div class="deal-card">
-          <div class="deal-card-name">Fusion Peptide</div>
-          <div class="deal-card-detail">Buy 1 Get 1 FREE &middot; Tonight Only</div>
-          <a href="https://fusionpeptide.com/?ref=pepstracker" target="_blank" rel="noopener" class="btn btn-rose">Shop Now</a>
-          <div class="code-display-card" onclick="copyCode('PEPSTRACKER', this)" title="Click to copy">
-            &#128203; PEPSTRACKER
-          </div>
-        </div>
+        
       </div>
       <p style="font-size:0.78rem;color:var(--gray-400);margin-top:16px;text-align:center">Deals change often. Always review vendor pricing, policies, and product details before ordering.</p>
     </div>
@@ -2308,5 +2435,42 @@ function calcBmi() {
   document.getElementById('bmi-result').classList.add('show');
 }
 </script>
+
+  <!-- PEPTIDE GUIDE MODAL -->
+  <div class="peptide-guide-modal-backdrop" id="peptide-guide-modal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="peptide-guide-modal">
+      <button class="modal-close" onclick="document.getElementById('peptide-guide-modal').classList.remove('open')" aria-label="Close">&times;</button>
+      <div class="modal-icon">&#127811;</div>
+      <h3>Free Beginner Peptide Guide</h3>
+      <p>Enter your name and email below and Heather will send your free guide straight to your inbox!</p>
+      <div id="guide-form-area">
+        <form action="https://formsubmit.co/getglowing@glowwithheather.com" method="POST" onsubmit="showGuideSuccess(event)">
+          <input type="hidden" name="_subject" value="Free Beginner Peptide Guide Request">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="name" placeholder="Your First Name" required autocomplete="given-name">
+          <input type="email" name="email" placeholder="Your Email Address" required autocomplete="email">
+          <button type="submit" class="guide-submit-btn">&#10024; Send Me the Free Guide!</button>
+        </form>
+      </div>
+      <div class="guide-success" id="guide-success-msg">
+        <div style="font-size:2.5rem">&#127881;</div>
+        <p style="color:var(--rose);font-weight:700;font-size:1.1rem;margin:0">You're on the list!</p>
+        <p style="margin:0;font-size:0.95rem">Check your inbox &mdash; Heather will be in touch soon with your guide. &#128149;</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  function showGuideSuccess(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    fetch(form.action, { method: 'POST', body: data })
+      .catch(() => {});
+    document.getElementById('guide-form-area').style.display = 'none';
+    document.getElementById('guide-success-msg').classList.add('show');
+  }
+  </script>
 </body>
 </html>
