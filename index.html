@@ -3430,5 +3430,295 @@ function submitGuideForm(e){e.preventDefault();var form=document.getElementById(
   frame();
 })();
 </script>
+<!-- ===== GLOW WITH HEATHER — LANGUAGE PICKER (EN / ES) ===== -->
+
+<style>
+  :root {
+    --gwh-lang-ink:       #3d2b33;
+    --gwh-lang-soft:      #8b7480;
+    --gwh-lang-blush:     #f7e7e5;
+    --gwh-lang-rose:      #c9868a;
+    --gwh-lang-gold:      #d9b48f;
+    --gwh-lang-cream:     #fffaf7;
+  }
+
+  #gwh-lang-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(61, 43, 51, 0.38);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    animation: gwhLangFade 0.5s ease forwards;
+  }
+  #gwh-lang-overlay[hidden] { display: none; }
+
+  @keyframes gwhLangFade { to { opacity: 1; } }
+  @keyframes gwhLangRise {
+    from { opacity: 0; transform: translateY(14px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .gwh-lang-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--gwh-lang-cream);
+    border: 1px solid rgba(217, 180, 143, 0.45);
+    border-radius: 22px;
+    padding: 40px 32px 34px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(61, 43, 51, 0.22);
+    animation: gwhLangRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  }
+
+  .gwh-lang-eyebrow {
+    margin: 0 0 6px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--gwh-lang-rose);
+  }
+
+  .gwh-lang-rule {
+    width: 46px;
+    height: 1px;
+    margin: 0 auto 18px;
+    background: var(--gwh-lang-gold);
+  }
+
+  .gwh-lang-card h2 {
+    margin: 0 0 4px;
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--gwh-lang-ink);
+  }
+
+  .gwh-lang-card h2 span {
+    display: block;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--gwh-lang-soft);
+  }
+
+  .gwh-lang-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .gwh-lang-buttons button {
+    display: block;
+    width: 100%;
+    padding: 16px 12px;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gwh-lang-ink);
+    background: #fff;
+    border: 1px solid rgba(201, 134, 138, 0.4);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .gwh-lang-buttons button small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--gwh-lang-soft);
+  }
+
+  .gwh-lang-buttons button:hover {
+    background: var(--gwh-lang-blush);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(201, 134, 138, 0.28);
+  }
+
+  .gwh-lang-buttons button:focus-visible {
+    outline: 2px solid var(--gwh-lang-rose);
+    outline-offset: 3px;
+  }
+
+  /* Small pill that stays on the page so visitors can switch later */
+  #gwh-lang-switch {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 9998;
+    padding: 9px 16px;
+    font-family: 'Poppins', system-ui, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gwh-lang-ink);
+    background: rgba(255, 250, 247, 0.94);
+    border: 1px solid rgba(217, 180, 143, 0.6);
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(61, 43, 51, 0.14);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  #gwh-lang-switch[hidden] { display: none; }
+  #gwh-lang-switch:hover { background: var(--gwh-lang-blush); transform: translateY(-1px); }
+  #gwh-lang-switch:focus-visible { outline: 2px solid var(--gwh-lang-rose); outline-offset: 3px; }
+
+  @media (max-width: 420px) {
+    .gwh-lang-card { padding: 32px 22px 26px; }
+    .gwh-lang-buttons { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #gwh-lang-overlay, .gwh-lang-card { animation: none; opacity: 1; }
+    .gwh-lang-buttons button:hover, #gwh-lang-switch:hover { transform: none; }
+  }
+
+  /* Hide the Google Translate top banner so it doesn't shove the layout down */
+  .goog-te-banner-frame,
+  .goog-te-gadget-icon,
+  #goog-gt-tt,
+  .goog-tooltip { display: none !important; }
+  body { top: 0 !important; position: static !important; }
+</style>
+
+<div id="gwh-lang-overlay" hidden translate="no" class="notranslate">
+  <div class="gwh-lang-card" role="dialog" aria-modal="true" aria-labelledby="gwh-lang-title">
+    <p class="gwh-lang-eyebrow">Glow With Heather</p>
+    <div class="gwh-lang-rule"></div>
+    <h2 id="gwh-lang-title">
+      Choose your language
+      <span>Elige tu idioma</span>
+    </h2>
+    <div class="gwh-lang-buttons">
+      <button type="button" data-gwh-lang="en">
+        English
+        <small>Continue in English</small>
+      </button>
+      <button type="button" data-gwh-lang="es">
+        Español
+        <small>Ver el sitio en español</small>
+      </button>
+    </div>
+  </div>
+</div>
+
+<button id="gwh-lang-switch" type="button" hidden translate="no" class="notranslate">Ver en Español</button>
+
+<div id="google_translate_element" style="display:none"></div>
+
+<script>
+(function () {
+  var KEY = 'gwh-lang';
+
+  var overlay = document.getElementById('gwh-lang-overlay');
+  var pill    = document.getElementById('gwh-lang-switch');
+
+  /* ---- storage helpers (fail quietly in private mode) ---- */
+  function remember(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function recall()    { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+
+  /* ---- the googtrans cookie is what actually flips the page ---- */
+  function readCookie() {
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+
+  function writeCookie(value) {
+    var base = value ? 'googtrans=' + value : 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    var root = location.hostname.replace(/^www\./, '');
+    document.cookie = base + '; path=/';
+    document.cookie = base + '; path=/; domain=.' + root;
+  }
+
+  /* ---- load Google's translate engine only when Spanish is on ---- */
+  function loadEngine() {
+    if (window.__gwhTranslateLoaded) return;
+    window.__gwhTranslateLoaded = true;
+    window.googleTranslateElementInit = function () {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,es',
+        autoDisplay: false
+      }, 'google_translate_element');
+    };
+    var s = document.createElement('script');
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.head.appendChild(s);
+  }
+
+  /* ---- hand-written Spanish for anything you don't want machine-translated.
+         Usage in your HTML:  <h1 data-es="Brilla desde adentro">Glow from within</h1>  ---- */
+  function applyManualSpanish() {
+    document.querySelectorAll('[data-es]').forEach(function (el) {
+      if (!el.dataset.gwhOriginal) el.dataset.gwhOriginal = el.innerHTML;
+      el.setAttribute('translate', 'no');
+      el.classList.add('notranslate');
+      el.innerHTML = el.dataset.es;
+    });
+  }
+
+  function updatePill(lang) {
+    pill.textContent = lang === 'es' ? 'View in English' : 'Ver en Español';
+    pill.setAttribute('aria-label', lang === 'es'
+      ? 'Switch this site to English'
+      : 'Ver este sitio en español');
+    pill.hidden = false;
+  }
+
+  function choose(lang) {
+    remember(lang);
+    var want = lang === 'es' ? '/en/es' : '';
+    var have = readCookie();
+    writeCookie(want);
+    overlay.hidden = true;
+    updatePill(lang);
+    if (have !== want) { location.reload(); return; }
+    if (lang === 'es') { loadEngine(); applyManualSpanish(); }
+  }
+
+  /* ---- wire up ---- */
+  overlay.querySelectorAll('[data-gwh-lang]').forEach(function (btn) {
+    btn.addEventListener('click', function () { choose(btn.dataset.gwhLang); });
+  });
+
+  pill.addEventListener('click', function () {
+    choose(recall() === 'es' ? 'en' : 'es');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.hidden) choose('en');
+  });
+
+  /* ---- first paint ---- */
+  var saved = recall();
+
+  if (!saved) {
+    // Nothing chosen yet — pre-select the button matching their browser language
+    overlay.hidden = false;
+    var guess = (navigator.language || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+    var focusBtn = overlay.querySelector('[data-gwh-lang="' + guess + '"]');
+    if (focusBtn) setTimeout(function () { focusBtn.focus(); }, 400);
+  } else {
+    updatePill(saved);
+    if (saved === 'es') {
+      loadEngine();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyManualSpanish);
+      } else {
+        applyManualSpanish();
+      }
+    }
+  }
+})();
+</script>
+<!-- ===== END LANGUAGE PICKER ===== -->
+
 </body>
 </html>
